@@ -12,6 +12,16 @@
 				float: left;
 				border: 1px dotted black;
 			}
+			#controls{
+				-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none; /* Safari */
+				-khtml-user-select: none; /* Konqueror HTML */
+				-moz-user-select: none; /* Old versions of Firefox */
+				-ms-user-select: none; /* Internet Explorer/Edge */
+				user-select: none; /* Non-prefixed version, currently
+				supported by Chrome, Opera and Firefox */
+			}
+
 		</style>
 	</head>
 
@@ -59,8 +69,8 @@
 				}
 			}
 		</script>
-		<p style="position: relative; top:0.5rem;display: inline;"><input type="checkbox" id="debugBtn"/> <span style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Debug mode</span>	</p>
-		
+		<p style="position: relative; top:0.5rem;display: inline;" id="controls"><input type="checkbox" id="debugBtn"/> <span style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Debug mode</span>	</p>
+
 		<script src="webgl.js"></script>
 		
 		<script src="main.js"></script>
