@@ -116,7 +116,7 @@ function eachFrame(){
 	read()
 
 	// DRAWING TO CANVAS
-	drawToCanvas(0)
+	drawToCanvas(debugBtn && debugBtn.checked)
 	pairCounter++
 	if(pairCounter==2){
 		pairCounter=0
@@ -189,7 +189,7 @@ function genBottomPaddedTexture(){
 					padTex[y*width*4 + x*4 + 0] = 255
 				}
 				padTex[y*width*4 + x*4 + 1] = 0
-				padTex[y*width*4 + x*4 + 2] = 255
+				padTex[y*width*4 + x*4 + 2] = 0
 				padTex[y*width*4 + x*4 + 3] = 255
 			}else{
 				if(y===0){
@@ -197,12 +197,12 @@ function genBottomPaddedTexture(){
 					padTex[y*width*4 + x*4 + 0] = 0
 					padTex[y*width*4 + x*4 + 1] = 255
 					padTex[y*width*4 + x*4 + 2] = 0
-					padTex[y*width*4 + x*4 + 3] = 255
+					padTex[y*width*4 + x*4 + 3] = 0
 				}else{
 					padTex[y*width*4 + x*4 + 0] = 0
 					padTex[y*width*4 + x*4 + 1] = 0
 					padTex[y*width*4 + x*4 + 2] = 0
-					padTex[y*width*4 + x*4 + 3] = 255
+					padTex[y*width*4 + x*4 + 3] = 0
 				}
 			}
 		}

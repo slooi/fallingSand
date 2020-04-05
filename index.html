@@ -9,6 +9,7 @@
 				background-color: rgb(221, 221, 221);
 			}
 			canvas{
+				float: left;
 				border: 1px dotted black;
 			}
 		</style>
@@ -44,19 +45,24 @@
 				}else{
 					// setup
 					vec4 c = texture2D(tex0,vec2(v_TexCoord.x,v_TexCoord.y));
-					//vec4 tl = texture2D(tex0,vec2(v_TexCoord.x-u_PixDia,v_TexCoord.y+u_PixDia));
+					vec4 tl = texture2D(tex0,vec2(v_TexCoord.x-u_PixDia,v_TexCoord.y+u_PixDia));
 					vec4 t = texture2D(tex0,vec2(v_TexCoord.x,v_TexCoord.y+u_PixDia));
-					//vec4 tr = texture2D(tex0,vec2(v_TexCoord.x+u_PixDia,v_TexCoord.y+u_PixDia));
+					vec4 tt = texture2D(tex0,vec2(v_TexCoord.x,v_TexCoord.y+u_PixDia*2.0));
+					vec4 tr = texture2D(tex0,vec2(v_TexCoord.x+u_PixDia,v_TexCoord.y+u_PixDia));
 					vec4 b = texture2D(tex0,vec2(v_TexCoord.x,v_TexCoord.y-u_PixDia));
 
 					// red
-					float red = t.r-c.r*(1.0-c.g)+c.r*c.g + c.r*t.r*(1.0-c.b);
+					float red = t.r-c.r*(1.0-c.g)+c.r*c.g + c.r*t.r*(1.0-c.a);// + tl.b - c.g*b.r*(1.0-tt.r)
 					float green = c.g + b.g * b.r;
-					gl_FragColor = vec4(red,green,c.b,1);
+					float blue = 0.0;//c.g*b.r*(1.0-tt.r)
+					gl_FragColor = vec4(red,green,blue,1);
 				}
 			}
 		</script>
+		<p style="position: relative; top:0.5rem;display: inline;"><input type="checkbox" id="debugBtn"/> <span style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Debug mode</span>	</p>
+		
 		<script src="webgl.js"></script>
+		
 		<script src="main.js"></script>
 	</body>
 </html>
